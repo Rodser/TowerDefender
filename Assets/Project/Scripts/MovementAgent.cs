@@ -4,20 +4,20 @@ public class MovementAgent : MonoBehaviour
 {
     private const float TOLERANCE = 0.1f;
     [SerializeField]
-    private float speed;
+    private float _speed;
     [SerializeField]
-    private Vector3 target;
+    private Vector3 _target;
 
 
     private void Update()
     {
-        float distancec = (target - transform.position).magnitude;
+        float distancec = (_target - transform.position).magnitude;
         
         if (distancec < TOLERANCE)
             return;
 
-        var dir = (target - transform.position).normalized;
-        var delta = dir * (speed * Time.deltaTime);
+        var dir = (_target - transform.position).normalized;
+        var delta = dir * (_speed * Time.deltaTime);
         transform.Translate(delta);
     }
 }
