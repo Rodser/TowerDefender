@@ -11,13 +11,16 @@ namespace Field
         [SerializeField]
         private float _nodeSize;
         [SerializeField]
-        private Vector2Int _target;
+        private Vector2Int _targetCoordinate;
         [SerializeField]
-        private Vector2Int _start;
+        private Vector2Int _startCoordinate;
 
         private Grid _grid;
         private Camera _camera;
         private Vector3 _offset;
+
+        public Vector2Int StartCoordinate { get => _startCoordinate; }
+        public Grid Grid { get => _grid; }
 
         private void Start()
         {
@@ -29,7 +32,7 @@ namespace Field
             transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
 
             _offset = transform.position - (new Vector3(width, 0f, height) * 0.5f);
-            _grid = new Grid(_gridWidth, _gridHeight, _offset, _nodeSize, _target);
+            _grid = new Grid(_gridWidth, _gridHeight, _offset, _nodeSize, _targetCoordinate);
         }
 
         private void Update()

@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 1533676787}
   - component: {fileID: 1533676786}
   - component: {fileID: 1533676785}
+  - component: {fileID: 1533676790}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -241,8 +242,8 @@ MonoBehaviour:
   _gridWidth: 20
   _gridHeight: 20
   _nodeSize: 1
-  _target: {x: 0, y: 0}
-  _start: {x: 0, y: 0}
+  _targetCoordinate: {x: 0, y: 0}
+  _startCoordinate: {x: 19, y: 19}
 --- !u!64 &1533676786
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -320,6 +321,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533676790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533676784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7111fa34e563540926605d554b17c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementAgent: {fileID: 7833434653019886137, guid: cacaf9337bf48ad4da1b759efb97a89d, type: 3}
+  _gridHolder: {fileID: 1533676785}
+  _timeSpawn: 1
 --- !u!1 &1852373118
 GameObject:
   m_ObjectHideFlags: 0
