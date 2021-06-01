@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Turret.Weapon;
+using UnityEngine;
 
 namespace Turret 
 {
@@ -6,7 +7,8 @@ namespace Turret
 
     public class TurretAsset : ScriptableObject
     {
-        public int Health;
+        //public int Health;
         public TurretView TurretViewPrefab;
+        public TurretWeaponAssetBase WeaponAsset;
     }
 }

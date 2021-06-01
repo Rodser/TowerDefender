@@ -3,6 +3,7 @@ using EnemySpawn;
 using Field;
 using System;
 using System.Collections.Generic;
+using Turret.Weapon;
 using TurretSpawn;
 using UnityEngine;
 
@@ -36,7 +37,8 @@ namespace Runtime
                 new GridRaycastController(Game.Player.GridHolder),
                 new EnemySpawnController(Game.CurrentLevel.SpawnWaves,Game.Player.Grid),
                 new TurretSpawnController(Game.Player.Grid,Game.Player.TurretMarket),
-                new MovementController()
+                new MovementController(),
+                new TurretShootController()
             };
         }
         private void OnStartControllers()
