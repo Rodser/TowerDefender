@@ -1,19 +1,18 @@
-﻿using Assets;
-using Enemy;
+﻿using Enemy;
+using Field;
 using Runtime;
 using UnityEngine;
-using Grid = Field.Grid;
 
 namespace EnemySpawn
 {
     class EnemySpawnController : IController
     {
         private SpawnWavesAsset _spawnWaves;
-        private Grid _grid;
+        private GridField _grid;
         private float _startTime;
         private float _passedTimeAtPreviousTime = -1f;
 
-        public EnemySpawnController(SpawnWavesAsset spawnWaves, Grid grid)
+        public EnemySpawnController(SpawnWavesAsset spawnWaves, GridField grid)
         {
             _spawnWaves = spawnWaves;
             _grid = grid;

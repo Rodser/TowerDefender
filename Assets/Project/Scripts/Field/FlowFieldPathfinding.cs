@@ -5,10 +5,10 @@ namespace Field
 {
     public class FlowFieldPathfinding
     {
-        private Grid _grid;
+        private GridField _grid;
         private Vector2Int _target;
 
-        public FlowFieldPathfinding(Grid grid, Vector2Int target)
+        public FlowFieldPathfinding(GridField grid, Vector2Int target)
         {
             _grid = grid;
             _target = target;

@@ -1,6 +1,5 @@
 ﻿using Field;
 using UnityEngine;
-using Grid = Field.Grid;
 
 namespace Enemy
 {
@@ -13,7 +12,7 @@ namespace Enemy
 
         private Node _targetNode;
 
-        public GridMovementAgent(float speed, Transform transform, Grid grid)
+        public GridMovementAgent(float speed, Transform transform, GridField grid)
         {
             _speed = speed;
             _transform = transform;

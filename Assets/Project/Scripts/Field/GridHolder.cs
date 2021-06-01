@@ -15,12 +15,12 @@ namespace Field
         [SerializeField]
         private Vector2Int _startCoordinate;
 
-        private Grid _grid;
+        private GridField _grid;
         private Camera _camera;
         private Vector3 _offset;
 
         public Vector2Int StartCoordinate { get => _startCoordinate; }
-        public Grid Grid { get => _grid; }
+        public GridField Grid { get => _grid; }
 
         public void CreatGrid()
         {
@@ -32,7 +32,7 @@ namespace Field
             transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
 
             _offset = transform.position - (new Vector3(width, 0f, height) * 0.5f);
-            _grid = new Grid(_gridWidth, _gridHeight, _offset, _nodeSize,_startCoordinate, _targetCoordinate);
+            _grid = new GridField(_gridWidth, _gridHeight, _offset, _nodeSize,_startCoordinate, _targetCoordinate);
         }
 
         public void RaycastInGrid()

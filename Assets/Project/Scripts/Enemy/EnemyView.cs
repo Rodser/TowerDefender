@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Field;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -15,7 +16,7 @@ namespace Enemy
             _data = data;
         }
 
-        public void CreatMovementAgent(Field.Grid grid)
+        public void CreatMovementAgent(GridField grid)
         {
             _movementAgent = new GridMovementAgent(5f, transform, grid);
         }

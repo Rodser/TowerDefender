@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Field
 {
-    public class Grid
+    public class GridField
     {
         private Node[,] _nodes;
 
@@ -16,7 +16,7 @@ namespace Field
         private Node _selectedNode;
         private FlowFieldPathfinding _pathfinding;
 
-        public Grid(int width, int height, Vector3 offset, float nodeSize, Vector2Int start, Vector2Int target)
+        public GridField(int width, int height, Vector3 offset, float nodeSize, Vector2Int start, Vector2Int target)
         {
             _width = width;
             _height = height;

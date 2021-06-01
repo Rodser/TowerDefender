@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad4f0e6cb0f2914183b74d29680dd8b, type: 3}
-  m_Name: Enemy
+  m_Script: {fileID: 11500000, guid: d818cff110216a343889e87c0bfffe34, type: 3}
+  m_Name: TurretMarket
   m_EditorClassIdentifier: 
-  ViewPrefab: {fileID: 8520930473888998770, guid: cacaf9337bf48ad4da1b759efb97a89d, type: 3}
-  StartHealth: 100
+  TurretAssets:
+  - {fileID: 11400000, guid: 8a4be2a0ed596db448bf133ed4732a21, type: 2}

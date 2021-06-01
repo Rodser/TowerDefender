@@ -2,11 +2,11 @@
 
 namespace Field
 {
-    class GridPointerController : IController
+    class GridRaycastController : IController
     {
         private GridHolder _gridHolder;
 
-        public GridPointerController(GridHolder gridHolder)
+        public GridRaycastController(GridHolder gridHolder)
         {
             _gridHolder = gridHolder;
         }

@@ -1,9 +1,9 @@
-﻿
-using Enemy;
+﻿using Enemy;
 using EnemySpawn;
 using Field;
 using System;
 using System.Collections.Generic;
+using TurretSpawn;
 using UnityEngine;
 
 namespace Runtime
@@ -33,8 +33,9 @@ namespace Runtime
         {
             _controllers = new List<IController>
             {
-                new GridPointerController(Game.Player.GridHolder),
+                new GridRaycastController(Game.Player.GridHolder),
                 new EnemySpawnController(Game.CurrentLevel.SpawnWaves,Game.Player.Grid),
+                new TurretSpawnController(Game.Player.Grid,Game.Player.TurretMarket),
                 new MovementController()
             };
         }

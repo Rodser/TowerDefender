@@ -1,7 +1,6 @@
-﻿using Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets
+namespace Enemy
 {
     [CreateAssetMenu(menuName = "Assets/EnemyAsset", fileName = "Enemy", order = 5)]
 
