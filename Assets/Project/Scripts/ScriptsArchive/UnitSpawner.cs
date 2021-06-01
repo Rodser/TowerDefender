@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Unit
+namespace Enemy
 {
     public class UnitSpawner : MonoBehaviour
     {
@@ -28,10 +28,10 @@ namespace Unit
 
         private void SpawnUnit()
         {
-            Node startNode = _gridHolder.Grid.GetNode(_gridHolder.StartCoordinate);
-            Vector3 position = startNode.Position;
-            GridMovementAgent movementAgent = Instantiate(_movementAgent, position, Quaternion.identity);
-            movementAgent.SetStartNode(startNode);
+            //Node startNode = _gridHolder.Grid.GetNode(_gridHolder.StartCoordinate);
+            //Vector3 position = startNode.Position;
+            //GridMovementAgent movementAgent = Instantiate(_movementAgent, position, Quaternion.identity);
+            //movementAgent.SetTargetNode(startNode);
         }
     }
 }

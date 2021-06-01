@@ -22,7 +22,7 @@ namespace Field
         public Vector2Int StartCoordinate { get => _startCoordinate; }
         public Grid Grid { get => _grid; }
 
-        private void Start()
+        public void CreatGrid()
         {
             _camera = Camera.main;
 
@@ -32,10 +32,10 @@ namespace Field
             transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
 
             _offset = transform.position - (new Vector3(width, 0f, height) * 0.5f);
-            _grid = new Grid(_gridWidth, _gridHeight, _offset, _nodeSize, _targetCoordinate);
+            _grid = new Grid(_gridWidth, _gridHeight, _offset, _nodeSize,_startCoordinate, _targetCoordinate);
         }
 
-        private void Update()
+        public void RaycastInGrid()
         {
             if (_grid == null && _camera == null)
                 return;
@@ -43,20 +43,23 @@ namespace Field
             Ray ray = _camera.ScreenPointToRay(mousePosition);
             if(Physics.Raycast(ray,out RaycastHit hit))
             {
-                if (hit.transform != transform) 
+                if (hit.transform != transform)
+                {
+                    _grid.UnselectNode();
                     return;
+                }
 
                 Vector3 hitPosition = hit.point;
                 Vector3 difference = hitPosition - _offset;
                 int x = (int)(difference.x / _nodeSize);
                 int y = (int)(difference.z / _nodeSize);
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Node node = _grid.GetNode(x, y);
-                    node.IsOccupied = !node.IsOccupied;
-                    _grid.UpdatePathfinding();
-                }
+                _grid.SelectCoordinate(new Vector2Int(x, y));
+
+            }
+            else
+            {
+                _grid.UnselectNode();
             }
         }
 

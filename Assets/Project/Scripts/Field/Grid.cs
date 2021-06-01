@@ -9,12 +9,19 @@ namespace Field
 
         private int _width;
         private int _height;
+
+        private Vector2Int _startCoordinate;
+        private Vector2Int _targetCoordinate;
+
+        private Node _selectedNode;
         private FlowFieldPathfinding _pathfinding;
 
-        public Grid(int width, int height, Vector3 offset, float nodeSize, Vector2Int target)
+        public Grid(int width, int height, Vector3 offset, float nodeSize, Vector2Int start, Vector2Int target)
         {
             _width = width;
             _height = height;
+            _startCoordinate = start;
+            _targetCoordinate = target;
 
             _nodes = new Node[width, height];
 
@@ -33,6 +40,31 @@ namespace Field
         public int Width { get => _width; }
         public int Height { get => _height; }
 
+        public Node GetStartNode()
+        {
+            return GetNode(_startCoordinate);
+        }
+        public Node GetTargetNode()
+        {
+            return GetNode(_targetCoordinate);
+        }
+
+        public void SelectCoordinate(Vector2Int coordinate)
+        {
+            _selectedNode = GetNode(coordinate);
+        }
+        public void UnselectNode()
+        {
+            _selectedNode = null;
+        }
+        public bool HasSelectedNode()
+        {
+            return _selectedNode != null;
+        }
+        public Node GetSelectedNode()
+        {
+            return _selectedNode;
+        }
 
         public Node GetNode(Vector2Int coordinate)
         {
