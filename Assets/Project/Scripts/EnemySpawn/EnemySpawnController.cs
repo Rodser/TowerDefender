@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EnemySpawn
 {
-    class EnemySpawnController : IController
+    public class EnemySpawnController : IController
     {
         private SpawnWavesAsset _spawnWaves;
         private GridField _grid;

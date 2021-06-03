@@ -7,8 +7,9 @@ namespace Turret.Weapon.Projectile.Bullet
     {
         [SerializeField]
         private float _speed;
-        private bool _didHit;
-        private EnemyData _hitEnemy;
+        private int _damage = 10;
+        private bool _didHit = false;
+        private EnemyData _hitEnemy = null;
         
         public void TickApproaching()
         {
@@ -32,9 +33,9 @@ namespace Turret.Weapon.Projectile.Bullet
         }
         public void DestroyProjectile()
         {
-            if(_hitEnemy!= null)
+            if(_hitEnemy != null)
             {
-                Debug.Log("hit");
+                _hitEnemy.GetDamage(_damage);
             }
             Destroy(gameObject);
         }

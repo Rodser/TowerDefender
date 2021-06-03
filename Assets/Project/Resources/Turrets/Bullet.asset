@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81280f77c301f7441acf23e887ec37b0, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: 
-  _bulletProjectile: {fileID: 0}
+  _bulletProjectile: {fileID: 3142149311514380994, guid: 825e867b92b47d84ab9b2e5a2db52865, type: 3}

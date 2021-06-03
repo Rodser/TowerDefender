@@ -2,7 +2,7 @@
 
 namespace Field
 {
-    class GridRaycastController : IController
+    public class GridRaycastController : IController
     {
         private GridHolder _gridHolder;
 

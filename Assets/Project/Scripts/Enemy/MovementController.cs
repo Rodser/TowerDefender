@@ -2,7 +2,7 @@
 
 namespace Enemy
 {
-    class MovementController : IController
+    public class MovementController : IController
     {
         public void OnStart()
         {

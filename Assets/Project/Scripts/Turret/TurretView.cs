@@ -5,6 +5,7 @@ namespace Turret
     public class TurretView : MonoBehaviour
     {
         private TurretData _data;
+        [SerializeField]
         private Transform _projectileOrigin;
         [SerializeField]
         private Transform _tower;

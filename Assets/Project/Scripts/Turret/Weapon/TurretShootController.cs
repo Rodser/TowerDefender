@@ -2,7 +2,7 @@
 
 namespace Turret.Weapon
 {
-    class TurretShootController : IController
+    public class TurretShootController : IController
     {
         public void OnStart()
         {
