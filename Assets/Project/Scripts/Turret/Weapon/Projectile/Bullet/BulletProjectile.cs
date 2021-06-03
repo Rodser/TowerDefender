@@ -7,10 +7,16 @@ namespace Turret.Weapon.Projectile.Bullet
     {
         [SerializeField]
         private float _speed;
-        private int _damage = 10;
+        private float _damage;
         private bool _didHit = false;
         private EnemyData _hitEnemy = null;
-        
+
+
+        public void SetAsset(BulletProjectileAsset bulletProjectileAsset)
+        {
+            _speed = bulletProjectileAsset.Speed;
+            _damage = bulletProjectileAsset.Damage;
+        }
         public void TickApproaching()
         {
             transform.Translate(transform.forward * _speed * Time.deltaTime, Space.World);

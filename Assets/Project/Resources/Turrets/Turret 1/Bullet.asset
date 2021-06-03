@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   _bulletProjectile: {fileID: 3142149311514380994, guid: 825e867b92b47d84ab9b2e5a2db52865, type: 3}
+  _speed: 14
+  _damage: 16

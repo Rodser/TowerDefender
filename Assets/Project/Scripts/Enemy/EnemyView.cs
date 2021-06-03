@@ -18,7 +18,7 @@ namespace Enemy
 
         public void CreatMovementAgent(GridField grid)
         {
-            _movementAgent = new GridMovementAgent(5f, transform, grid);
+            _movementAgent = new GridMovementAgent(Data.Asset.Speed, transform, grid);
         }
     }
 }

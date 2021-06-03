@@ -7,14 +7,18 @@ namespace Enemy
     public class EnemyData
     {
         private EnemyView _view;
-        private int _health;
+        private EnemyAsset _enemyAsset;
+        private float _health;
 
         public EnemyData(EnemyAsset enemy)
         {
             _health = enemy.StartHealth;
+            _enemyAsset = enemy;
         }
 
         public EnemyView View { get => _view; }
+        public EnemyAsset Asset { get => _enemyAsset; }
+
 
         public void AttachView(EnemyView view)
         {
@@ -22,10 +26,10 @@ namespace Enemy
             _view.AttachData(this);
         }
 
-        public void GetDamage(int damage)
+        public void GetDamage(float damage)
         {
             _health -= damage;
-            if(_health <= 0)
+            if(_health <= 0f)
             {
                 Die();
             }

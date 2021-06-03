@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad4f0e6cb0f2914183b74d29680dd8b, type: 3}
-  m_Name: Enemy
+  m_Script: {fileID: 11500000, guid: b09c1a8df1ced34469ca8cb340ed01f9, type: 3}
+  m_Name: BowWeapon
   m_EditorClassIdentifier: 
-  ViewPrefab: {fileID: 8520930473888998770, guid: cacaf9337bf48ad4da1b759efb97a89d, type: 3}
-  Speed: 4
-  StartHealth: 100
+  RateOfFire: 2.5
+  MaxDistance: 20
+  ProjectileAsset: {fileID: 11400000, guid: 4fbc19d3b77c3b84abd3e94aa6ddf383, type: 2}

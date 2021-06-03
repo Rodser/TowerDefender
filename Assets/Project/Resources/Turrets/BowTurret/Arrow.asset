@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad4f0e6cb0f2914183b74d29680dd8b, type: 3}
-  m_Name: Enemy
+  m_Script: {fileID: 11500000, guid: 81280f77c301f7441acf23e887ec37b0, type: 3}
+  m_Name: Arrow
   m_EditorClassIdentifier: 
-  ViewPrefab: {fileID: 8520930473888998770, guid: cacaf9337bf48ad4da1b759efb97a89d, type: 3}
-  Speed: 4
-  StartHealth: 100
+  _bulletProjectile: {fileID: 3492968305614469145, guid: 390f9dd21b435e94c922b2cec87c4b5f, type: 3}
+  _speed: 22
+  _damage: 15
