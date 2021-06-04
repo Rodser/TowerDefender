@@ -21,6 +21,7 @@ namespace Enemy
                 if(enemyData.IsDead)
                 {
                     _diedEnemyDatas.Add(enemyData);
+                    Game.Player.TurretMarket.GetReward(enemyData);
                     enemyData.Die();
                 }
             }

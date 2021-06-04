@@ -33,7 +33,16 @@ namespace TurretSpawn
                 if (selectedNode.IsOccupied)
                     return;
 
-                SpawnTurret(_market.ChosenTurret, selectedNode);
+                TurretAsset asset = _market.ChosenTurret;
+                if(asset != null)
+                {
+                    _market.BuyTurret(asset);
+                    SpawnTurret(asset, selectedNode);
+                }
+                else
+                {
+                    Debug.Log("Not enough money!");
+                }
             }
         }
         private void SpawnTurret(TurretAsset asset, Node node)

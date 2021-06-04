@@ -10,5 +10,6 @@ namespace Enemy
         public float Speed;
         public float StartHealth;
         public int Damage;
+        public int Reward;
     }
 }
