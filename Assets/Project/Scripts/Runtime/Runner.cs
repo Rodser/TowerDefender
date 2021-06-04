@@ -1,6 +1,7 @@
 ﻿using Enemy;
 using EnemySpawn;
 using Field;
+using Main;
 using System;
 using System.Collections.Generic;
 using Turret.Weapon;
@@ -38,7 +39,11 @@ namespace Runtime
                 new EnemySpawnController(Game.CurrentLevel.SpawnWaves,Game.Player.Grid),
                 new TurretSpawnController(Game.Player.Grid,Game.Player.TurretMarket),
                 new MovementController(),
-                new TurretShootController()
+                new EnemyReachController(Game.Player.Grid),
+                new TurretShootController(),
+                new EnemyDeadController(),
+                new LoseController(),
+                new WinController()
             };
         }
         private void OnStartControllers()
@@ -59,6 +64,10 @@ namespace Runtime
         {
             foreach (IController controller in _controllers)
             {
+                if (!_isRunning)
+                {
+                    return;
+                }
                 try
                 {
                     controller.Tick();

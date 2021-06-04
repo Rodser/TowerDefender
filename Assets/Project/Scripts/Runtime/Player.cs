@@ -11,15 +11,21 @@ namespace Runtime
     public class Player
     {
         private List<EnemyData> _enemyDatas = new List<EnemyData>();
+
+
         private List<TurretData> _turretDatas = new List<TurretData>();
+        private bool _allWavesAreSpawned = false;
+        private int _health;
 
         public IReadOnlyList<EnemyData> EnemyDatas { get => _enemyDatas; }
         public IReadOnlyList<TurretData> TurretDatas { get => _turretDatas; }
+        public int Health { get => _health; }
 
         public readonly GridHolder GridHolder;
         public readonly GridField Grid;
         public readonly TurretMarket TurretMarket;
         public readonly EnemySearch EnemySearch;
+
 
         public Player()
         {
@@ -29,6 +35,7 @@ namespace Runtime
 
             TurretMarket = new TurretMarket(Game.CurrentLevel.TurretMarketAsset);
             EnemySearch = new EnemySearch(_enemyDatas);
+            _health = Game.CurrentLevel.StartHealth;
         }
 
         public void EnemySpawned(EnemyData data)
@@ -36,9 +43,49 @@ namespace Runtime
             _enemyDatas.Add(data);
         }
 
+        public void EnemyDied(EnemyData data)
+        {
+            _enemyDatas.Remove(data);
+        }
+
+        public void EnemyReachedTarget(EnemyData data)
+        {
+            _enemyDatas.Remove(data);
+        }
+        public void LastWaveSpawned()
+        {
+            _allWavesAreSpawned = true;
+        }
+        public void ApplyDamage(int damage)
+        {
+            _health -= damage;
+        }
         public void TurretSpawned(TurretData data)
         {
             _turretDatas.Add(data);
+        }
+        public void CheckForWin()
+        {
+            if (_allWavesAreSpawned && EnemyDatas.Count == 0)
+            {
+                GameWon();
+            }
+        }
+        private void GameWon()
+        {
+            Game.StopPlayer();
+            Debug.Log("Win");
+        }
+
+        public void CheckForLose()
+        {
+            if (_health <= 0)
+                GameLost();
+        }
+        private void GameLost()
+        {
+            Game.StopPlayer();
+            Debug.Log("Lose");
         }
     }
 }

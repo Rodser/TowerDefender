@@ -20,6 +20,11 @@ namespace Enemy
             SetTargetNode(grid.GetStartNode());
         }
 
+        public Node GetCurrentNode()
+        {
+            return _targetNode;
+        }
+
         public void TickMovement()
         {
             if (_targetNode == null)

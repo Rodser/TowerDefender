@@ -1,6 +1,7 @@
 ﻿using Enemy;
 using Field;
 using Runtime;
+using System.Collections;
 using UnityEngine;
 
 namespace EnemySpawn
@@ -9,8 +10,8 @@ namespace EnemySpawn
     {
         private SpawnWavesAsset _spawnWaves;
         private GridField _grid;
-        private float _startTime;
-        private float _passedTimeAtPreviousTime = -1f;
+        private IEnumerator _spawnRoutine;
+        private float _waitTime;
 
         public EnemySpawnController(SpawnWavesAsset spawnWaves, GridField grid)
         {
@@ -20,7 +21,8 @@ namespace EnemySpawn
 
         public void OnStart()
         {
-            _startTime = Time.time;
+            _waitTime = Time.time;
+            _spawnRoutine = SpawnRoutine();
         }
 
         public void OnStop()
@@ -29,23 +31,34 @@ namespace EnemySpawn
 
         public void Tick()
         {
-            float passedTime = Time.time - _startTime;
-            float timeToSpawn = 0f;
+            if(_waitTime > Time.time)
+                return;
 
-            foreach (SpawnWave wave in _spawnWaves.SpawnWaves)
+            if (_spawnRoutine.MoveNext())
             {
-                timeToSpawn += wave.TimeBeforeStartWavw;
-                for (int i = 0; i < wave.Count; i++)
+                if(_spawnRoutine.Current is CustomWaitForSeconds waitForSeconds)
                 {
-                    if (passedTime >= timeToSpawn && _passedTimeAtPreviousTime < timeToSpawn)
-                        SpawnEnemy(wave.Enemy);
-
-                    if(i < wave.Count -1)
-                        timeToSpawn += wave.TimeBetweenSpawn;
+                    _waitTime = Time.time + waitForSeconds.Seconds;
                 }
             }
+        }
 
-            _passedTimeAtPreviousTime = passedTime;
+        private IEnumerator SpawnRoutine()
+        {
+            foreach (SpawnWave wave in _spawnWaves.SpawnWaves)
+            {
+                yield return new CustomWaitForSeconds(wave.TimeBeforeStartWavw);
+
+                for (int i = 0; i < wave.Count; i++)
+                {
+                    SpawnEnemy(wave.Enemy);
+                    if(i < wave.Count - 1)
+                    {
+                        yield return new CustomWaitForSeconds(wave.TimeBetweenSpawn);
+                    }
+                }
+            }
+            Game.Player.LastWaveSpawned();
         }
 
         private void SpawnEnemy(EnemyAsset asset)
@@ -58,6 +71,15 @@ namespace EnemySpawn
             view.CreatMovementAgent(_grid);
 
             Game.Player.EnemySpawned(data);
+        }
+        private class CustomWaitForSeconds
+        {
+            public readonly float Seconds;
+
+            public CustomWaitForSeconds(float seconds)
+            {
+                Seconds = seconds;
+            }
         }
     }
 }

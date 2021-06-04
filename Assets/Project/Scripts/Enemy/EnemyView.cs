@@ -1,4 +1,5 @@
 ﻿using Field;
+using System;
 using UnityEngine;
 
 namespace Enemy
@@ -19,6 +20,16 @@ namespace Enemy
         public void CreatMovementAgent(GridField grid)
         {
             _movementAgent = new GridMovementAgent(Data.Asset.Speed, transform, grid);
+        }
+
+        internal void Die()
+        {
+            Destroy(gameObject);
+        }
+
+        internal void ReachedTarget()
+        {
+            Destroy(gameObject);
         }
     }
 }

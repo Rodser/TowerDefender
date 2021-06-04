@@ -19,7 +19,7 @@ namespace Enemy
         public EnemyView View { get => _view; }
         public EnemyAsset Asset { get => _enemyAsset; }
 
-
+        public bool IsDead => _health <= 0f;
         public void AttachView(EnemyView view)
         {
             _view = view;
@@ -28,16 +28,20 @@ namespace Enemy
 
         public void GetDamage(float damage)
         {
-            _health -= damage;
-            if(_health <= 0f)
-            {
-                Die();
-            }
+            if (IsDead)
+                return;
+                
+            _health -= damage;            
         }
 
-        private void Die()
+        public void Die()
         {
-            Debug.Log("Die");
+            _view.Die();
+        }
+        public void ReachedTarget()
+        {
+            _health = 0;
+            _view.ReachedTarget();
         }
     }
 }
