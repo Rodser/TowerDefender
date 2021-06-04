@@ -1,15 +1,22 @@
 ﻿using Enemy;
 using UnityEngine;
+using Utils.Pooling;
 
 namespace Turret.Weapon.Projectile.Bullet
 {
-    public class BulletProjectile : MonoBehaviour, IProjectile
+    public class BulletProjectile : PooledMonoBehaviour, IProjectile
     {
         [SerializeField]
         private float _speed;
         private float _damage;
         private bool _didHit = false;
         private EnemyData _hitEnemy = null;
+
+        public override void AwakePooled()
+        {
+            _didHit = false;
+            _hitEnemy = null;
+        }
 
 
         public void SetAsset(BulletProjectileAsset bulletProjectileAsset)
@@ -43,7 +50,8 @@ namespace Turret.Weapon.Projectile.Bullet
             {
                 _hitEnemy.GetDamage(_damage);
             }
-            Destroy(gameObject);
+
+            GameObjectPool.ReturnObjectToPool(this);
         }
 
     }
