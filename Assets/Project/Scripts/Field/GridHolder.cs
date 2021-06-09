@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Field
 {
@@ -38,6 +39,8 @@ namespace Field
         public void RaycastInGrid()
         {
             if (_grid == null && _camera == null)
+                return;
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = _camera.ScreenPointToRay(mousePosition);

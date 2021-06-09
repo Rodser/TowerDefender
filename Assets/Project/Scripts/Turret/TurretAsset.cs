@@ -9,6 +9,8 @@ namespace Turret
     {        
         public TurretView TurretViewPrefab;
         public TurretWeaponAssetBase WeaponAsset;
+        public Sprite Sprite;
         public int Price;
+        public string Description;
     }
 }

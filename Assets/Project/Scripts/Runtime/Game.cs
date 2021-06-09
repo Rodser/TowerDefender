@@ -35,6 +35,8 @@ namespace Runtime
             _player = new Player();
             _runner = UnityEngine.Object.FindObjectOfType<Runner>();
             _runner.StartRunning();
+
+            SceneManager.LoadScene(AssetRoot.UIScene.name, LoadSceneMode.Additive);
         }
         public static void StopPlayer()
         {

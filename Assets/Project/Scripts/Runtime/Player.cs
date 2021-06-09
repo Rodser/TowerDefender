@@ -20,6 +20,7 @@ namespace Runtime
         public IReadOnlyList<EnemyData> EnemyDatas { get => _enemyDatas; }
         public IReadOnlyList<TurretData> TurretDatas { get => _turretDatas; }
         public int Health { get => _health; }
+        public event System.Action<int> HealthChanged;
 
         public readonly GridHolder GridHolder;
         public readonly GridField Grid;
@@ -33,7 +34,7 @@ namespace Runtime
             GridHolder.CreatGrid();
             Grid = GridHolder.Grid;
 
-            TurretMarket = new TurretMarket(Game.CurrentLevel.TurretMarketAsset);
+            TurretMarket = new TurretMarket();
             EnemySearch = new EnemySearch(_enemyDatas);
             _health = Game.CurrentLevel.StartHealth;
         }
@@ -59,6 +60,7 @@ namespace Runtime
         public void ApplyDamage(int damage)
         {
             _health -= damage;
+            HealthChanged?.Invoke(_health);
         }
         public void TurretSpawned(TurretData data)
         {
@@ -86,6 +88,16 @@ namespace Runtime
         {
             Game.StopPlayer();
             Debug.Log("Lose");
+        }
+
+        public void Pause()
+        {
+            Time.timeScale = 0f;
+        }
+        public void UnPause()
+        {
+            Time.timeScale = 1f;
+
         }
     }
 }

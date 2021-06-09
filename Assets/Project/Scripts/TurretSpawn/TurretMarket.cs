@@ -7,19 +7,24 @@ namespace TurretSpawn
 {
     public class TurretMarket
     {
-        private TurretMarketAsset _asset;
+        private TurretAsset _chooseTurret;
         private int _money;
 
-        public TurretMarket(TurretMarketAsset asset)
+        public TurretMarket()
         {
-            _asset = asset;
             _money = Game.CurrentLevel.StartMoney;
         }
 
         public TurretAsset ChosenTurret
         {
-            get => _money < _asset.TurretAssets[0].Price ? null : _asset.TurretAssets[0];
+            get => _chooseTurret.Price >= _money ? null : _chooseTurret;
         }
+        public void ChooseTurret(TurretAsset asset)
+        {
+            _chooseTurret = asset;
+        }
+        public int Money { get => _money; }
+        public event System.Action<int> MoneyChanged;
 
         public void BuyTurret(TurretAsset turretAsset)
         {
@@ -29,10 +34,12 @@ namespace TurretSpawn
                 return;
             }
             _money -= turretAsset.Price;
+            MoneyChanged?.Invoke(_money);
         }
         public void GetReward(EnemyData enemyData)
         {
             _money += enemyData.Asset.Reward;
+            MoneyChanged?.Invoke(_money);
         }
     }
 }

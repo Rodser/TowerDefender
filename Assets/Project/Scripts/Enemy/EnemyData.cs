@@ -20,6 +20,10 @@ namespace Enemy
         public EnemyAsset Asset { get => _enemyAsset; }
 
         public bool IsDead => _health <= 0f;
+
+        public float Health { get => _health; }
+
+        public event Action<float> HealthChanged;
         public void AttachView(EnemyView view)
         {
             _view = view;
@@ -31,7 +35,10 @@ namespace Enemy
             if (IsDead)
                 return;
                 
-            _health -= damage;            
+            _health -= damage;
+            if (_health < 0)
+                _health = 0;
+            HealthChanged?.Invoke(_health);
         }
 
         public void Die()

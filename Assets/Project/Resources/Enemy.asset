@@ -15,3 +15,5 @@ MonoBehaviour:
   ViewPrefab: {fileID: 8520930473888998770, guid: cacaf9337bf48ad4da1b759efb97a89d, type: 3}
   Speed: 4
   StartHealth: 100
+  Damage: 12
+  Reward: 10

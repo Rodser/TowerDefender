@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnWaves:
   - Enemy: {fileID: 11400000, guid: c84416aedbdddfb4399375b75a24c135, type: 2}
-    Count: 10
-    TimeBetweenSpawn: 1
-    TimeBeforeStartWavw: 5
-  - Enemy: {fileID: 11400000, guid: c84416aedbdddfb4399375b75a24c135, type: 2}
-    Count: 10
-    TimeBetweenSpawn: 2
-    TimeBeforeStartWavw: 1
+    Count: 6
+    TimeBetweenSpawn: 0.6
+    TimeBeforeStartWavw: 2

@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretViewPrefab: {fileID: 7353028965385039505, guid: 106be6de4e976bb4c9db971cee421c5b, type: 3}
   WeaponAsset: {fileID: 11400000, guid: 035dac7da6ba15c47ba825bb3c4accec, type: 2}
+  Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  Price: 25
+  Description: Bow
