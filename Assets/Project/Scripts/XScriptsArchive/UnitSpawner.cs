@@ -28,10 +28,10 @@ namespace Enemy
 
         private void SpawnUnit()
         {
-            //Node startNode = _gridHolder.Grid.GetNode(_gridHolder.StartCoordinate);
-            //Vector3 position = startNode.Position;
-            //GridMovementAgent movementAgent = Instantiate(_movementAgent, position, Quaternion.identity);
-            //movementAgent.SetTargetNode(startNode);
+            Node startNode = _gridHolder.Grid.GetNode(_gridHolder.StartCoordinate);
+            Vector3 position = startNode.Position;
+            GridMovementAgent movementAgent = Instantiate(_movementAgent, position, Quaternion.identity);
+            movementAgent.SetTargetNode(startNode);
         }
     }
 }
